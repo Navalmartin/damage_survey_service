@@ -39,9 +39,7 @@ def _check_form_validity(*, owner_name:str, owner_surname: str, owner_email: str
                          propulsion_type: str, vessel_mmsi: str,
                          survey_items_submitted: dict[str, List]) -> Result[str, str]:
     
-    # import pdb
-    # pdb.set_trace()
-
+   
     if owner_name is None or owner_name == "":
         return Err("Owner name is missing")
     
@@ -67,18 +65,38 @@ def _check_form_validity(*, owner_name:str, owner_surname: str, owner_email: str
                "survey_items": survey_items_submitted}) 
 
 
+st.header("mir damage survey service")
+st.write("----------")
+st.subheader("Create new damage survey")
+st.write("Use the form below to create a new damage survey")
+
 survey_items_submitted = {}
 checkpoint_description_to_type_map = {}
 with st.form("create_damage_survey_form"):
-    st.header("Create new damage survey")
-    st.write("----------")
-    owner_name:str = st.text_input(label="Owner name (required)")
-    owner_surname: str = st.text_input(label="Owner surname (required)")
-    owner_email: str = st.text_input(label="Owner email (required)")
-    vessel_type: str = st.selectbox("Vessel type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
-    vessel_hull_material_type: str = st.selectbox("Vessel hull material type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
-    propulsion_type: str = st.selectbox("Propulsion type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
-    vessel_mmsi: str = st.text_input(label="Vessel mmsi (required)")
+   
+    # owner_name:str = st.text_input(label="Owner name (required)")
+    # owner_surname: str = st.text_input(label="Owner surname (required)")
+    # owner_email: str = st.text_input(label="Owner email (required)")
+    # vessel_type: str = st.selectbox("Vessel type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
+    # vessel_hull_material_type: str = st.selectbox("Vessel hull material type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
+    # propulsion_type: str = st.selectbox("Propulsion type", ["Select", "Monohull", "RIB", "Trimaran", "Catamaran"])
+    # vessel_mmsi: str = st.text_input(label="Vessel mmsi (required)")
+
+    survey_country: str = st.text_input(label="Country of the survey", value="Unknown")
+    survey_city: str = st.text_input(label="City of the survey", value="Unknown")
+
+
+    abnormal_events_description: str = st.text_area(label="Abnormal events description", 
+                                                    #label_visibility="hidden",
+                                                    placeholder="Please describe the abnormal events")
+    
+    abnormal_events_type: str = st.multiselect(label="Abnormal event type", 
+                                               options=["None", "Collisions", "Grounding", 
+                                                         "Lighting electrical surge", 
+                                                         "Broaching crash gybe", "Flooding swamping",
+                                                         "Structural conversions"])
+    
+
 
     st.write("Select checkpoints to be included in the survey")
     for si in survey_items:

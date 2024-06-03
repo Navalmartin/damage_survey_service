@@ -1,5 +1,5 @@
 MIR_HOST_URL: str = "http://0.0.0.0:8001" 
-MIR_API_URL: str = "http://0.0.0.0:8001/api"
+MIR_API_URL: str = f"{MIR_HOST_URL}/api"
 MIR_API_VERSION: str = 'v1'
 
 DEFAULT_ABNORMAL_EVENTS_MSG: str = "No abnormal events reporeted."

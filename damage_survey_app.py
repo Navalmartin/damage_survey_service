@@ -22,7 +22,7 @@ def _handle_login_credentials(email: str, password: str) -> bool:
 
 def login_view():
     with st.form("damage_survey_login_form"):
-        st.header("Welcom to mir damage survey service")
+        st.header("Welcome to mir damage survey service")
         st.write("Use your credentials to login and use the service")
         st.write("----------")
         email = st.text_input(label="email (required)")
@@ -67,9 +67,9 @@ def login_view():
                     'token_type': login_response['token_type']
             }
 
-            print(login_response)
+            #print(login_response)
             st.session_state['user_data_session'] = user_data_session
-            st.switch_page("pages/damage_survey_form_view.py")
+            st.switch_page("pages/start_damage_survey_view.py")
             #else:
                 #logger.error(f"Error occured whilst trying to log user with email {email}")
         else:
