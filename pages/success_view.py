@@ -3,6 +3,10 @@ from menu import menu_with_redirect
 
 
 menu_with_redirect()
+
+st.header("mir damage survey service")
+st.write("----------")
+
 st.write(f"Survey successfully created")
 clicked = st.button("Close service")
 

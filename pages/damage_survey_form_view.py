@@ -166,16 +166,16 @@ if submitted:
                        'Content-Type': 'application/json'}
         
 
-        print(form_data)
+        #print(form_data)
 
-        response = requests.post(url=URL, 
-                                 headers=header_data,
-                                 data=json.dumps(form_data))
+        #response = requests.post(url=URL, 
+        #                         headers=header_data,
+        #                         data=json.dumps(form_data))
         
-        if response.status_code == 201:
-            st.switch_page("pages/success_view.py")
-        else:
-            logger.error("Could not create damage survey")
+        #if response.status_code == 201:
+        st.switch_page("pages/success_view.py")
+        #else:
+        #    logger.error("Could not create damage survey")
     else:
         logger.error(f"Error occurred {result.err_value}")
 
