@@ -35,8 +35,8 @@ for item in SI_ITEMS:
 
 
 def _check_form_validity(*, owner_name:str, owner_surname: str, owner_email: str,
-                         vessel_type: str, vessel_hull_material_type: str,
-                         propulsion_type: str, vessel_mmsi: str,
+                         #vessel_type: str, vessel_hull_material_type: str,
+                         #propulsion_type: str, vessel_mmsi: str,
                          survey_items_submitted: dict[str, List]) -> Result[str, str]:
     
    
@@ -59,9 +59,9 @@ def _check_form_validity(*, owner_name:str, owner_surname: str, owner_email: str
     return Ok({"owner_surname": owner_surname, 
                "owner_name": owner_name, 
                "owner_email": owner_email, 
-               "vessel_type": vessel_type,
-               "vessel_hull_material_type": vessel_hull_material_type, 
-               "vessel_propulsion_type": propulsion_type, "vessel_mmsi": vessel_mmsi,
+               #"vessel_type": vessel_type,
+               #"vessel_hull_material_type": vessel_hull_material_type, 
+               #"vessel_propulsion_type": propulsion_type, "vessel_mmsi": vessel_mmsi,
                "survey_items": survey_items_submitted}) 
 
 
@@ -131,10 +131,10 @@ if submitted:
     result = _check_form_validity(owner_surname=owner_surname,
                                   owner_email=owner_email, 
                                   owner_name=owner_name,
-                                  vessel_type=vessel_type,
-                                  vessel_hull_material_type=vessel_hull_material_type,
-                                  propulsion_type=propulsion_type,
-                                  vessel_mmsi=vessel_mmsi,
+                                  #vessel_type="Monohull",
+                                  #vessel_hull_material_type="vessel_hull_material_type",
+                                  #propulsion_type=propulsion_type,
+                                  #vessel_mmsi=vessel_mmsi,
                                   survey_items_submitted=survey_items_submitted)
 
     if isinstance(result, Ok):
