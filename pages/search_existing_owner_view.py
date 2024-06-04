@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import json
-import bson
+#import bson
 from loguru import logger
 from menu import menu_with_redirect
 from config import (MIR_API_URL, 
@@ -50,7 +50,7 @@ if yes_owner_submitted:
         st.session_state['user_data_session']['owner_data'] = {'owner_email': owner_email,
                                                                'owner_name': owner_name,
                                                                'owner_surname': owner_surname,
-                                                               'owner_idx': bson.ObjectId()}
+                                                               'owner_idx': '123456'}
         st.switch_page("pages/verify_owner_details_view.py")
 
         # owner_name = 'some_name'
